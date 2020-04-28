@@ -1,6 +1,9 @@
-const baseURL = ""
+const baseURL = "";
 
-function login()
+document.querySelector("#login").addEventListener("click", login);
+function login(event)
 {
-    return fetch()
+    event.preventDefault();
+    console.log(event);
+    // return fetch();
 }
