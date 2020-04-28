@@ -71,22 +71,24 @@ function validateLogin(obj)
     }
     else
     {
-        renderMainPage(obj)
+        const currentUser = new User(obj.user_name, obj.id)
+        renderMainPage(currentUser)
     }
 }
 
-function renderMainPage(obj)
+function renderMainPage(currentUser)
 {
     document.querySelector("#main").innerHTML =`
     <div id="home-container">
         <div id="welcome">     
             <p id="logo">You(r)Tube Lister</p>
-            <p>Welcome back, ${obj.user_name}!</p>      
+            <p>Welcome back, ${currentUser.user_name}!</p>      
         </div>
 
         <div id="action-container">
             <label>Search for Videos</label>
             <input type="text"/>
+            <button id="search-submit">Search</button>
         </div>
         
         <div id ="user-container">
@@ -96,8 +98,9 @@ function renderMainPage(obj)
 
             <div id="playlists">
             </div>
-            
+
         </div>
     </div>
     `
+    document.querySelector("#search-submit").addEventListener("click", currentUser.searchVideos)
 }
