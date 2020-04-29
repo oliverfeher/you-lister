@@ -82,18 +82,20 @@ function renderMainPage(currentUser)
     <div id="home-container">
         <div id="welcome">     
             <p id="logo">You(r)Tube Lister</p>
-            <p>Welcome back, ${currentUser.user_name}!</p>      
+            <p>Welcome back, <span>${currentUser.user_name}</span> !</p>      
         </div>
 
         <div id="action-container">
             <label>Search for Videos</label>
+            <br/>
             <input type="text"/>
+            <br/>
             <button id="search-submit">Search</button>
         </div>
         
         <div id ="user-container">
 
-            <div id="search result">
+            <div id="search-result">
             </div>
 
             <div id="playlists">
