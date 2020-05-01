@@ -62,3 +62,12 @@ span {
     align-self: center;
     width: 30%;
 }
+
+iframe {
+    width: 800px;
+    height: 500px;
+    border: black 5px solid;
+    margin-bottom: 3%;
+    margin-left: auto;
+    margin-right: auto;
+}
