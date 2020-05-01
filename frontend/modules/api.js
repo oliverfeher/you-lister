@@ -26,7 +26,7 @@ function login(event)
 }
 
 
-
+// SIGN UP FUNCTION
 function signUp(event)
 {
     event.preventDefault();

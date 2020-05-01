@@ -71,11 +71,13 @@ function validateLogin(obj)
     }
     else
     {
-        const currentUser = new User(obj.user_name, obj.id)
+        const currentUser = new User(obj) // what couild use instead writing obj.user_name
+        console.log(currentUser);
         renderMainPage(currentUser)
     }
 }
 
+// RENDER 
 function renderMainPage(currentUser)
 {
     document.querySelector("#main").innerHTML =`
