@@ -71,14 +71,14 @@ function validateLogin(obj)
     }
     else
     {
+        console.log(obj);
         const currentUser = new User(obj) // what couild use instead writing obj.user_name
-        console.log(currentUser);
-        renderMainPage(currentUser)
+        renderMainPage(currentUser, obj)
     }
 }
 
 // RENDER 
-function renderMainPage(currentUser)
+function renderMainPage(currentUser, obj)
 {
     document.querySelector("#main").innerHTML =`
     <div id="home-container">
@@ -106,11 +106,18 @@ function renderMainPage(currentUser)
             <select id="list-playlists">
             <input type="text" placeholder="playlist's name.." id="playlist-name"/>
             <input type="button" value="Create Playlist" id="create-playlist"/>
+            <div id="playlist-videos"></div>
             </div>
 
         </div>
     </div>
     `
-    document.querySelector("#search-submit").addEventListener("click", currentUser.searchVideos)
-    document.querySelector("#create-playlist").addEventListener("click", currentUser.createPlaylist)
+    document.querySelector("#search-submit").addEventListener("click", currentUser.searchVideos);
+    document.querySelector("#create-playlist").addEventListener("click", currentUser.createPlaylist);
+    renderPlaylists(obj);
+}
+
+function renderPlaylists(obj)
+{
+    obj.playlists.forEach(playlist=>Playlist.renderExistingPlaylists(playlist))
 }

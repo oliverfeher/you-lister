@@ -10,7 +10,7 @@ class Api::V1::SessionsController < ApplicationController
                 error: "User doesn't exist"
             }
         else
-            render json: user
+            render json: user, include: ["playlists"]
         end
     end
 
