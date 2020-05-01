@@ -8,7 +8,7 @@ class Video
 
 
     // RENDER ITSELF ON THE DOM
-    render()
+    render(playlists)
     {
         // IFRAME VARIABLES
         let youtubeContainer = document.createElement("div");
@@ -18,7 +18,12 @@ class Video
         let container = document.querySelector("#search-result");
         let selectBar = document.createElement("select");
         let addButton = document.createElement("button");
-        
+        playlists.forEach(element => {
+            let selectOption = document.createElement("option");
+            selectOption.text = element.name;
+            selectOption.setAttribute("value", element.id)
+            selectBar.add(selectOption)
+        });
         youtubeContainer.setAttribute("class", "result-video-container")
         selectBar.setAttribute("id", "select-bar");
         addButton.innerText = "Add"

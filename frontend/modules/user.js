@@ -24,11 +24,11 @@ class User
     }
 
     // SEARCH FOR VIDEOS + RENDER THE RESULTS
-    searchVideos(event)
+    searchVideos = (event) =>
     {
 
         // RENDER EACH VIDEO BY CREATING VIDEO INSTANCES
-        function renderSearch(videoList)
+        const renderSearch = (videoList) =>
         {
             // REMOVE ALL IFRAME UPON NEW SEARCH
             Array.from(document.querySelectorAll(".result-video-container")).forEach(video=>video.remove());
@@ -36,7 +36,7 @@ class User
             // CREATE VIDEO INSTANCES AND CALL ISNTANCE METHOD RENDER
             videoList.items.forEach(video=> {
                 let youtubeVid = new Video(video.snippet.title, video.id.videoId);
-                youtubeVid.render();
+                youtubeVid.render(this.playlists);
             })
         }
 
@@ -67,13 +67,12 @@ class User
         .then(data=>createAndRender(data))
         
 
-        function createAndRender(playlist){
-            // debugger
+        const createAndRender = (playlist) => {
             let playlistElement = document.createElement("option");
             let newPlaylist = new Playlist(playlist.name, playlist.id);
-
             playlistElement.text = playlist.name
             playlistElement.setAttribute("value", playlist.id);
+            this.playlists.push(playlist)
             
             document.querySelector("#list-playlists").add(playlistElement);
 

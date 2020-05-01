@@ -4,22 +4,21 @@ class Playlist
     {
         this.name = name;
         this.id = id;
+        this.videos = [];
     }
 
     static renderExistingPlaylists(playlist, currentUser)
     {
         let newPlaylist = new Playlist(playlist.name, playlist.id)
         currentUser.addPlaylist(newPlaylist);
-        debugger
         let newPlaylistElement = document.createElement("option");
         newPlaylistElement.text = playlist.name;
-
         document.querySelector("#list-playlists").add(newPlaylistElement);
     }
 
-    addVideos(videos)
+    addVideos(video)
     {
-        this.videos = videos;
+        this.videos.push(video);
     }
 
     getVideos()
