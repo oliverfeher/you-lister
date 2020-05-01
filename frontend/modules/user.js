@@ -17,12 +17,8 @@ class User
         {
             Array.from(document.querySelectorAll("iframe")).forEach(video=>video.remove())
             videoList.items.forEach(video=> {
-                let vid = document.createElement("iframe");
-                vid.setAttribute("src", `https://www.youtube.com/embed/${video.id.videoId}`)
-                let container = document.querySelector("#search-result");
-                let p = document.createElement("p");
-                p.innerText = video.snippet.title
-                container.append(p, vid);
+                let youtubeVid = new Video(video.snippet.title, video.id.videoId);
+                youtubeVid.render();
             })
         }
 
