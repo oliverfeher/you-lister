@@ -13,7 +13,7 @@ class User
 
     searchVideos(event)
     {
-        console.log(event.target.parentNode.children[1].value)
+        Youtube.get(event.target.parentNode.children[2].value).then(data=>console.log(data))
     }
 
 }
