@@ -104,6 +104,7 @@ function renderMainPage(currentUser)
             <div id="playlists">
             <h3>Your playlists:</h3>
             <select id="list-playlists">
+            <input type="text" placeholder="playlist's name.."/>
             <input type="button" value="Create Playlist"/>
             </div>
 
