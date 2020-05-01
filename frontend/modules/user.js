@@ -20,7 +20,7 @@ class User
         function renderSearch(videoList)
         {
             // REMOVE ALL IFRAME UPON NEW SEARCH
-            Array.from(document.querySelectorAll("iframe")).forEach(video=>video.remove());
+            Array.from(document.querySelectorAll(".result-video-container")).forEach(video=>video.remove());
 
             // CREATE VIDEO INSTANCES AND CALL ISNTANCE METHOD RENDER
             videoList.items.forEach(video=> {
@@ -32,6 +32,11 @@ class User
         // FETCH FROM CUSTOM MADE YOUTUBE GET REQUEST
         Youtube.get(event.target.parentNode.children[2].value).then(data=> renderSearch(data))
         
+    }
+
+    createPlaylist(event)
+    {
+        console.log(event.target.parentNode.children[2].value)
     }
 
 }

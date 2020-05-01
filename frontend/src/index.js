@@ -104,12 +104,13 @@ function renderMainPage(currentUser)
             <div id="playlists">
             <h3>Your playlists:</h3>
             <select id="list-playlists">
-            <input type="text" placeholder="playlist's name.."/>
-            <input type="button" value="Create Playlist"/>
+            <input type="text" placeholder="playlist's name.." id="playlist-name"/>
+            <input type="button" value="Create Playlist" id="create-playlist"/>
             </div>
 
         </div>
     </div>
     `
     document.querySelector("#search-submit").addEventListener("click", currentUser.searchVideos)
+    document.querySelector("#create-playlist").addEventListener("click", currentUser.createPlaylist)
 }
