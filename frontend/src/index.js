@@ -114,10 +114,10 @@ function renderMainPage(currentUser, obj)
     `
     document.querySelector("#search-submit").addEventListener("click", currentUser.searchVideos);
     document.querySelector("#create-playlist").addEventListener("click", currentUser.createPlaylist);
-    renderPlaylists(obj);
+    renderPlaylists(obj, currentUser);
 }
 
-function renderPlaylists(obj)
+function renderPlaylists(obj, currentUser)
 {
-    obj.playlists.forEach(playlist=>Playlist.renderExistingPlaylists(playlist))
+    obj.playlists.forEach(playlist=>Playlist.renderExistingPlaylists(playlist, currentUser))
 }

@@ -4,12 +4,23 @@ class User
     {
         this.id = id;
         this.user_name = user_name;
+        this.playlists = [];
     }
     
     // TESTING
     myName()
     {
         console.log(`say my name ${this.user_name}`)
+    }
+
+    addPlaylist(playlist)
+    {
+        this.playlists.push(playlist)
+    }
+
+    getPlaylists()
+    {
+        return this.playlists;
     }
 
     // SEARCH FOR VIDEOS + RENDER THE RESULTS
