@@ -5,8 +5,8 @@ Rails.application.routes.draw do
       get '/users/:id', to: 'users#show'
       get '/users', to: 'users#index'
       resource :users, only: [:update, :create]
+      resource :playlists, only: [:create, :update, :destroy]
       post "/login", to: "sessions#new"
-      post "/logout", to: "sessions#destroy"
     end
   end
 end
