@@ -20,7 +20,9 @@ class User
                 let vid = document.createElement("iframe");
                 vid.setAttribute("src", `https://www.youtube.com/embed/${video.id.videoId}`)
                 let container = document.querySelector("#search-result");
-                container.appendChild(vid);
+                let p = document.createElement("p");
+                p.innerText = video.snippet.title
+                container.append(p, vid);
             })
         }
 
