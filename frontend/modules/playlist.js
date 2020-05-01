@@ -1,10 +1,11 @@
 class Playlist
 {
-    constructor(name, videos)
+    constructor(name, id)
     {
         this.name = name;
-        this.videos = videos;
+        this.id = id;
     }
+
 
 
 }

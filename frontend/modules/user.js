@@ -53,8 +53,20 @@ class User
             })
         })
         .then(response=>response.json())
-        .then(data=>console.log(data))
+        .then(data=>createAndRender(data))
         
+
+        function createAndRender(playlist){
+            // debugger
+            let playlistElement = document.createElement("option");
+            let newPlaylist = new Playlist(playlist.name, playlist.id);
+
+            playlistElement.text = playlist.name
+            playlistElement.setAttribute("value", playlist.id);
+            
+            document.querySelector("#list-playlists").add(playlistElement);
+
+        }
     }
 
 }
