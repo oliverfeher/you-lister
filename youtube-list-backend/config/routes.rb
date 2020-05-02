@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get '/users', to: 'users#index'
       resource :users, only: [:update, :create]
       resource :playlists, only: [:create, :update, :destroy]
+      resource :videos, only: [:create, :destroy]
       post "/login", to: "sessions#new"
     end
   end

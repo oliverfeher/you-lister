@@ -71,8 +71,9 @@ function validateLogin(obj)
     }
     else
     {
-        console.log(obj);
         const currentUser = new User(obj) // what couild use instead writing obj.user_name
+        
+        console.log(currentUser);
         renderMainPage(currentUser, obj)
     }
 }
@@ -114,6 +115,7 @@ function renderMainPage(currentUser, obj)
     `
     document.querySelector("#search-submit").addEventListener("click", currentUser.searchVideos);
     document.querySelector("#create-playlist").addEventListener("click", currentUser.createPlaylist);
+    document.querySelector("#list-playlists").addEventListener("change", currentUser.renderOnChange)
     renderPlaylists(obj, currentUser);
 }
 

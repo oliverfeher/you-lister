@@ -36,7 +36,7 @@ class User
             // CREATE VIDEO INSTANCES AND CALL ISNTANCE METHOD RENDER
             videoList.items.forEach(video=> {
                 let youtubeVid = new Video(video.snippet.title, video.id.videoId);
-                youtubeVid.render(this.playlists);
+                youtubeVid.render(this.playlists, this);
             })
         }
 
@@ -72,11 +72,36 @@ class User
             let newPlaylist = new Playlist(playlist.name, playlist.id);
             playlistElement.text = playlist.name
             playlistElement.setAttribute("value", playlist.id);
-            this.playlists.push(playlist)
+            this.playlists.push(newPlaylist)
             
             document.querySelector("#list-playlists").add(playlistElement);
 
         }
     }
 
+    addVideoToPlaylist = (event) =>
+    {
+        fetch("http://localhost:3000/api/v1/videos", {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify({
+                user_id: this.id,
+                playlist_id: event.target.previousSibling.value,
+                video: {
+                    url: event.target.parentNode.children[1].src,
+                    title: event.target.parentNode.children[0].innerText
+                }
+            })
+        })
+        .then(response=>response.json())
+        .then(data=>console.log(data))
+    }
+
+    renderOnChange = (event) =>
+    {
+    
+    }
 }

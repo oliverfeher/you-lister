@@ -13,6 +13,8 @@ class Playlist
         currentUser.addPlaylist(newPlaylist);
         let newPlaylistElement = document.createElement("option");
         newPlaylistElement.text = playlist.name;
+        newPlaylistElement.setAttribute("value", playlist.id)
+        
         document.querySelector("#list-playlists").add(newPlaylistElement);
     }
 
