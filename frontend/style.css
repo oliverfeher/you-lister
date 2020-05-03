@@ -25,6 +25,13 @@ body {
     background-color: #77D7C7;
     border: none;
 }
+#signup-actual {
+    width: 150px;
+    height: 30px;
+    font-size: 0.6em;
+    background-color: #77D7C7;
+    border: none;
+}
 
 #signup {
     background-color: #9B7AC6;
@@ -46,13 +53,17 @@ body {
 }
 #welcome {
     font-size: 2.5em;
-    background-color: grey;
-    width: 50%;
+    background-color: rgb(80, 59, 104);
+    color: white;
+    width: 100%;
     margin: auto;
-    border: 3px black solid;
+    padding: 20px 0 20px 0;
+    -webkit-box-shadow: 0px 27px 17px -7px #50F2D7; 
+    box-shadow: 0px 30px 17px -7px #50F2D7;
+    margin-bottom: 5%;
 }
 span {
-    color: burlywood;
+    color: #50F2D7;
 }
 #action-container {
     margin-top: 3%;
@@ -65,23 +76,40 @@ span {
 }
 #user-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 2%;
-    border-top: 5px black solid;
     height: 100%;
 }
 #search-result {
-    border-right: 5px solid black;
-    width: 50%;
-    display: flex;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 32px;
+    align-self: center;
     text-align: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 #playlists {
     text-align: center;
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+#playlist-videos {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 32px;
+    align-self: center;
+    text-align: center;
+    flex-direction: row;
+}
+
+#create-playlist {
+    margin-bottom: 5%;
 }
 
 #playlists > input {
@@ -96,10 +124,26 @@ span {
 }
 
 iframe {
-    width: 800px;
-    height: 500px;
+    width: 500px;
+    height: 300px;
     border: black 5px solid;
     margin-bottom: 3%;
-    margin-left: auto;
+    margin-left: 10px;
     margin-right: auto;
+}
+
+.result-video-container {
+    -webkit-box-shadow: 5px 5px 50px 5px #9D75CB; 
+    box-shadow: 5px 5px 50px 5px #9D75CB;
+    width: 100%;
+    margin-bottom: 10%;
+    align-self: center;
+}
+
+.playlist-video-container {
+    -webkit-box-shadow: 5px 5px 50px 5px #5953CF; 
+    box-shadow: 5px 5px 50px 5px #5953CF;
+    width: 100%;
+
+    align-self: center;
 }

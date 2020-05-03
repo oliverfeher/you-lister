@@ -99,7 +99,6 @@ function renderMainPage(currentUser, obj)
         <div id ="user-container">
 
             <div id="search-result">
-            <h3>Search Results:</h3>
             </div>
             
             <div id="playlists">
