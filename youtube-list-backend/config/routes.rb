@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/users/:id', to: 'users#show'
       get '/users', to: 'users#index'
+      post "/videos", to: "videos#show"
       resource :users, only: [:update, :create]
       resource :playlists, only: [:create, :update, :destroy]
       resource :videos, only: [:create, :destroy]

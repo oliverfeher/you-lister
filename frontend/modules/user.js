@@ -102,6 +102,18 @@ class User
 
     renderOnChange = (event) =>
     {
-    
+        fetch("http://localhost:3000/api/v1/videos",{
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify({
+                user_id: this.id,
+                playlist_id: event.target.value,
+                })
+        })
+        .then(response=>response.json())
+        .then(data=>console.log(data))
     }
 }

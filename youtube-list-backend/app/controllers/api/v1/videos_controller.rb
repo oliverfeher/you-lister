@@ -1,5 +1,11 @@
 class Api::V1::VideosController < ApplicationController
 
+    def show
+        user = User.find_by(id: params[:user_id])
+        playlist = Playlist.find_by(id: params[:playlist_id])
+        render json: playlist.to_json(:include => [:videos])
+    end
+
     # USER ADDS NEW VIDEO TO A PLAYLIST
     def create
         user = User.find_by(id: params[:user_id])
