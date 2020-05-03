@@ -102,7 +102,7 @@ class User
 
     renderOnChange = (event) =>
     {
-        fetch("http://localhost:3000/api/v1/videos",{
+        fetch("http://localhost:3000/api/v1/playlist/videos",{
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
@@ -114,6 +114,33 @@ class User
                 })
         })
         .then(response=>response.json())
-        .then(data=>console.log(data))
+        .then(data=>User.renderVideosFromPlaylist(data))
+    }
+
+    static renderVideosFromPlaylist = (obj) =>
+    {
+        console.log(obj)
+        let playlistVideos = [...document.querySelector("#playlist-videos").children];
+        playlistVideos.forEach(container=> container.remove())
+        obj.videos.forEach(video => {
+            // IFRAME VARIABLES
+            let youtubeContainer = document.createElement("div");
+            let vid = document.createElement("iframe");
+            let p = document.createElement("p");
+            let container = document.querySelector("#playlist-videos");
+            let deleteButton = document.createElement("button");
+
+
+            youtubeContainer.setAttribute("class", "playlist-video-container")
+            deleteButton.innerText = "Delete"
+            deleteButton.setAttribute("class", "delete-video-to-playlist")
+            vid.setAttribute("src", video.url);
+            vid.setAttribute("id", video.id)
+            p.innerText = video.title;
+
+            // ACTUAL RENDERING
+            youtubeContainer.append(p, vid, deleteButton);
+            container.appendChild(youtubeContainer)
+        })
     }
 }
