@@ -104,7 +104,7 @@ function renderMainPage(currentUser, obj)
             
             <div id="playlists">
             <h3>Your playlists:</h3>
-            <select id="list-playlists">
+            <select id="list-playlists" data-set="${currentUser.id}">
             <input type="text" placeholder="playlist's name.." id="playlist-name"/>
             <input type="button" value="Create Playlist" id="create-playlist"/>
             <div id="playlist-videos"></div>

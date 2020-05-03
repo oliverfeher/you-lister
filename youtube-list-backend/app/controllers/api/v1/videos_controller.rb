@@ -15,8 +15,12 @@ class Api::V1::VideosController < ApplicationController
     end
 
     # USER DELETES VIDEO FROM A PLAYLIST
-    def delete
-
+    def destroy
+        video = Video.find_by(id: params[:id])
+        video.destroy
+        render json: {
+            video_id: params[:id]
+        }
     end
 
 end

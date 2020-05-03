@@ -114,12 +114,21 @@ class User
                 })
         })
         .then(response=>response.json())
-        .then(data=>User.renderVideosFromPlaylist(data))
+        .then(data=>this.renderVideosFromPlaylist(data))
     }
 
-    static renderVideosFromPlaylist = (obj) =>
+    deleteVideoFromPlaylist = (event) =>
     {
-        console.log(obj)
+        console.log(event.target.parentNode.parentNode.parentNode.children[1].dataset.set);
+        fetch(`http://localhost:3000/api/v1/videos/${event.target.parentNode.children[1].id}`, {
+            method: "DELETE"
+        })
+        .then(response=>response.json())
+        .then(data=>this.removeVideoFromDOM(data))
+    }
+
+    renderVideosFromPlaylist = (obj) =>
+    {
         let playlistVideos = [...document.querySelector("#playlist-videos").children];
         playlistVideos.forEach(container=> container.remove())
         obj.videos.forEach(video => {
@@ -134,6 +143,9 @@ class User
             youtubeContainer.setAttribute("class", "playlist-video-container")
             deleteButton.innerText = "Delete"
             deleteButton.setAttribute("class", "delete-video-to-playlist")
+            
+
+
             vid.setAttribute("src", video.url);
             vid.setAttribute("id", video.id)
             p.innerText = video.title;
@@ -142,5 +154,14 @@ class User
             youtubeContainer.append(p, vid, deleteButton);
             container.appendChild(youtubeContainer)
         })
+        document.querySelectorAll(".delete-video-to-playlist").forEach((button)=>
+            {
+                button.addEventListener("click", this.deleteVideoFromPlaylist)
+            })
+    }
+
+    removeVideoFromDOM(data)
+    {
+        [...document.querySelectorAll("iframe")].find(e=> e.id === data.video_id).parentNode.remove();
     }
 }
