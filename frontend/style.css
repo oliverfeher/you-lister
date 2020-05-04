@@ -2,8 +2,6 @@
 body {
     background-color: #030720;
     color: white;
-    -webkit-box-shadow: inset 0px 0px 22px 25px #77D7C7; 
-    box-shadow: inset 0px 0px 22px 25px #77D7C7;
 }
 #log-in-form {
     margin-top: 10%;

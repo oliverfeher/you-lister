@@ -1,7 +1,7 @@
 // FETCHING FROM YOUTUBE API, MAX RESULT 5
 class Youtube 
 {
-    static KEY = "AIzaSyDSKjl19sMQAmB5ccuTJHtk7ZvlNRdWxu0";
+    static KEY = 
     static baseURL = "https://www.googleapis.com/youtube/v3/search";
 
     static get(query)
