@@ -45,6 +45,7 @@ class User
         
     }
 
+    // CREATE PLAYLIST BASED ON USERS INPUT AND ADD TO THE DROPDOWN LIST
     createPlaylist = (event) =>
     {
         console.log(event.target.parentNode.children[2].value)
@@ -79,6 +80,7 @@ class User
         }
     }
 
+    // ADD VIDEOS TO SELECTED PLAYLISTS FROM SEARCH RESULTS
     addVideoToPlaylist = (event) =>
     {
         fetch("http://localhost:3000/api/v1/videos", {
@@ -100,6 +102,7 @@ class User
         .then(data=>this.ifSelectedAdd(data))
     }
 
+    // DROPDOWN BAR ON CHANGE RENDERS THE VIDEOS FROM SELECTED PLAYLISTS
     renderOnChange = (event) =>
     {
         fetch("http://localhost:3000/api/v1/playlist/videos",{
@@ -117,6 +120,7 @@ class User
         .then(data=>this.renderVideosFromPlaylist(data))
     }
 
+    // ON VIDEO ADD, IF THE PLAYLIST IS THE SAMEPLAYLIST THE IS CURRENTLY SELECTED RENDERS THE VIDEO RIGHT AWAY
     ifSelectedAdd(data){
         // if(document.querySelector("#list-playlists").value === )
         let videos = data.playlists.filter(playlist=> playlist.id === parseInt(document.querySelector("#list-playlists").value))
@@ -124,6 +128,8 @@ class User
         this.renderVideosFromPlaylist(videos[0]);
     }
 
+
+    // DELETE SELECTED VIDEO FROM PLAYLIST
     deleteVideoFromPlaylist = (event) =>
     {
         console.log(event.target.parentNode.parentNode.parentNode.children[1].dataset.set);
@@ -134,6 +140,8 @@ class User
         .then(data=>this.removeVideoFromDOM(data))
     }
 
+
+    // RENDER VIDEOS TO THE DOM FROM THE SELECTED PLAYLIST
     renderVideosFromPlaylist = (obj) =>
     {
         let playlistVideos = [...document.querySelector("#playlist-videos").children];
@@ -168,6 +176,8 @@ class User
             })
     }
 
+
+    // DELETE VIDEO FROM DOM
     removeVideoFromDOM(data)
     {
         [...document.querySelectorAll("iframe")].find(e=> e.id === data.video_id).parentNode.remove();

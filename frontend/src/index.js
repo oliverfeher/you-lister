@@ -25,12 +25,14 @@ function renderLogin()
 
 }
 
+// RENDER SIGN UP FORM
 function renderSignUp()
 {
     renderSignUpForm();
     document.querySelector("#signup-actual").addEventListener("click", signUp)
 }
 
+// SIGNUP FORM'S HTML
 function renderSignUpForm()
 {
     document.querySelector("#main").innerHTML = `
@@ -48,6 +50,8 @@ function renderSignUpForm()
         `
 }
 
+
+// VALIDATION WETHER LOGIN WAS SUCCESSFULL, BASED ON RESPONSE RENDER LOGIN FORM AGAIN OR PROCEED TO HOMEPAGE
 function validateLogin(obj)
 {
     if (obj.hasOwnProperty("error"))
@@ -76,7 +80,7 @@ function validateLogin(obj)
     }
 }
 
-// RENDER 
+// RENDER HOME PAGE
 function renderMainPage(currentUser, obj)
 {
     document.querySelector("#main").innerHTML =`
@@ -116,6 +120,8 @@ function renderMainPage(currentUser, obj)
     renderPlaylists(obj, currentUser);
 }
 
+
+// RENDER CURRENT USER'S P
 function renderPlaylists(obj, currentUser)
 {
     obj.playlists.forEach(playlist=>Playlist.renderExistingPlaylists(playlist, currentUser))
