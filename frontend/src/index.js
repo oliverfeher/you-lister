@@ -1,7 +1,8 @@
 
 // INIT
 renderLogin();
-document.querySelector("#signup").addEventListener("click", renderSignUp)
+document.querySelector("#signup").addEventListener("click", renderSignUp);
+let currentUser;
 
 
 // RENDER LOG IN PAGE
@@ -51,7 +52,6 @@ function validateLogin(obj)
 {
     if (obj.hasOwnProperty("error"))
     {
-        
         document.querySelector("#log-in-form").remove();
         document.querySelector("#main").innerHTML = `
         <div id="log-in-form">     
@@ -71,9 +71,7 @@ function validateLogin(obj)
     }
     else
     {
-        const currentUser = new User(obj) // what couild use instead writing obj.user_name
-        
-        console.log(currentUser);
+        currentUser = new User(obj) // what couild use instead writing obj.user_name
         renderMainPage(currentUser, obj)
     }
 }

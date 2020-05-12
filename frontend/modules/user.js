@@ -97,7 +97,7 @@ class User
             })
         })
         .then(response=>response.json())
-        .then(data=>console.log(data))
+        .then(data=>this.ifSelectedAdd(data))
     }
 
     renderOnChange = (event) =>
@@ -115,6 +115,13 @@ class User
         })
         .then(response=>response.json())
         .then(data=>this.renderVideosFromPlaylist(data))
+    }
+
+    ifSelectedAdd(data){
+        // if(document.querySelector("#list-playlists").value === )
+        let videos = data.playlists.filter(playlist=> playlist.id === parseInt(document.querySelector("#list-playlists").value))
+        // debugger;
+        this.renderVideosFromPlaylist(videos[0]);
     }
 
     deleteVideoFromPlaylist = (event) =>
@@ -154,6 +161,7 @@ class User
             youtubeContainer.append(p, vid, deleteButton);
             container.appendChild(youtubeContainer)
         })
+        console.log(currentUser)
         document.querySelectorAll(".delete-video-to-playlist").forEach((button)=>
             {
                 button.addEventListener("click", this.deleteVideoFromPlaylist)
